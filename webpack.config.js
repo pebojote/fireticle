@@ -1,13 +1,12 @@
-const path = require("path")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const outputDir = path.join(__dirname, "build/")
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const outputDir = path.join(__dirname, "build/");
 
-const isProd = process.env.NODE_ENV === "production"
+const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
   entry: "./src/Index.bs.js",
   mode: isProd ? "production" : "development",
-  devtool: "source-map",
   output: {
     path: outputDir,
     filename: "Index.js"
@@ -27,9 +26,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        test: /\.css|otf$/,
+        use: [
+          "style-loader",
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          "postcss-loader"
+        ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: 'asset/resource'
       }
     ]
   }
-}
+};

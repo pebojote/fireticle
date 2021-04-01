@@ -25,3 +25,13 @@ lib/bs
 .merlin
 .bsb.lock
 /node_modules/
+/lib/bs/
+/bundleOutput/
+/build
+
+# Ignore these associated with reason-react and bsb
+.merlin
+npm-debug.log
+.DS_Store
+.bsb.lock
+*.bs.js

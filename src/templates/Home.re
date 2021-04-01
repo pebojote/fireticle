@@ -1,5 +1,5 @@
 let str = React.string;
-let logo: string = [%raw "require('./assets/logo.png')"];
+let logo: string = [%raw "require('../assets/images/logo.png')"];
 
 [@react.component]
 let make = () =>
